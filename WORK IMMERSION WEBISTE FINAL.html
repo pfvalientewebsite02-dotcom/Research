@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <title>Login / Sign Up</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      position: relative;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('twalogonew.png') center/cover no-repeat;
+      filter: blur(4px);
+      z-index: -2;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: -1;
+    }
+
+    .header-content {
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(-30px);
+      animation: fadeHeader 1.2s ease-out forwards;
+    }
+    @keyframes fadeHeader { from { opacity: 0; transform: translateY(-30px);} to {opacity: 1; transform: translateY(0);} }
+
+    .header-content img {
+      width: 150px;
+      border-radius: 50%;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+      animation: floatLogo 2.5s ease-in-out 1.2s infinite alternate;
+    }
+    @keyframes floatLogo { from { transform: translateY(0);} to {transform: translateY(-8px);} }
+
+    .login-box {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(15px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 20px;
+      padding: 45px 35px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease-out 1.3s forwards;
+    }
+    @keyframes fadeInUp { to {opacity: 1; transform: translateY(0);} }
+
+    .login-box h2 { margin-bottom: 25px; font-weight: 600; color: #fff; }
+    .input-field { position: relative; margin-bottom: 20px; }
+
+    .input-field input {
+      width: 100%; padding: 12px 15px 12px 45px;
+      border: none; border-radius: 10px;
+      background: rgba(255, 255, 255, 0.85);
+      color: #333; font-size: 16px;
+    }
+
+    .input-field img {
+      position: absolute; top: 50%; left: 12px;
+      transform: translateY(-50%);
+      width: 20px; opacity: .8;
+    }
+
+    .login-box button {
+      width: 100%; padding: 12px;
+      border: none; border-radius: 10px;
+      background: linear-gradient(to right, #57e017, #d7ae46);
+      color: #fff; font-size: 16px; font-weight: bold;
+      cursor: pointer;
+    }
+
+    .toggle { margin-top: 15px; cursor: pointer; color: #57e017; }
+
+    /* ========== SPINNING LOGO LOADING SCREEN ========== */
+    #loaderScreen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .4s ease;
+    }
+
+    #loaderScreen img {
+      width: 140px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    /* MOBILE */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+  }
+  /* ===== MOBILE OPTIMIZATION ===== */
+@media (max-width: 768px) {
+
+  header {
+    flex-direction: column;
+    padding: 15px 20px;
+  }
+
+  .logo {
+    height: 45px;
+    margin-bottom: 10px;
+  }
+
+  header h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav a {
+    padding: 12px;
+    margin: 5px 0;
+    background-color: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  nav a::after {
+    display: none;
+  }
+
+  section {
+    padding: 30px 18px;
+    margin: 20px 15px;
+  }
+
+  h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  p, li {
+    font-size: 15px;
+    text-align: center;
+  }
+  </style>
+</head>
+
+<body>
+
+  <!-- LOADING SCREEN -->
+  <div id="loaderScreen">
+    <img src="logoacademyremove.png" alt="Loading...">
+  </div>
+
+  <div class="header-content">
+    <img src="logoacademyremove.png" alt="logo">
+    <h1>Work Immersion</h1>
+  </div>
+
+  <div class="login-box">
+    <h2 id="formTitle">Login</h2>
+
+    <div class="input-field">
+      <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png">
+      <input type="text" id="email" placeholder="Email" />
+    </div>
+
+    <div class="input-field">
+      <img src="https://cdn-icons-png.flaticon.com/512/3064/3064155.png">
+      <input type="password" id="password" placeholder="Password" />
+    </div>
+
+    <button onclick="submitForm()" id="mainBtn">Login</button>
+    <p class="toggle" onclick="toggleForm()">Create an Account</p>
+  </div>
+
+<script>
+  let isLogin = true;
+
+  function toggleForm() {
+    isLogin = !isLogin;
+    if(isLogin) {
+      formTitle.innerText = "Login";
+      mainBtn.innerText = "Login";
+      document.querySelector('.toggle').innerText = "Create an Account";
+    } else {
+      formTitle.innerText = "Sign Up";
+      mainBtn.innerText = "Sign Up";
+      document.querySelector('.toggle').innerText = "Already have an account? Login";
+    }
+  }
+
+  // SHOW LOADER FUNCTION
+  function showLoader() {
+    const loader = document.getElementById("loaderScreen");
+    loader.style.opacity = "1";
+    loader.style.pointerEvents = "all";
+  }
+
+  function submitForm() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    if(email === "" || password === "") {
+      alert("Please fill out all fields.");
+      return;
+    }
+
+    if(isLogin) {
+      let storedEmail = localStorage.getItem("email");
+      let storedPassword = localStorage.getItem("password");
+
+      if(email === storedEmail && password === storedPassword) {
+        showLoader();
+        setTimeout(() => {
+          window.location.href = "TableOfContents.html";
+        }, 2000);
+      } else {
+        alert("Incorrect email or password");
+      }
+
+    } else {
+      localStorage.setItem("email", email);
+      localStorage.setItem("password", password);
+      alert("Account created successfully!");
+      showLoader();
+      setTimeout(() => {
+        window.location.href = "TableOfContents.html";
+      }, 2000);
+    }
+  }
+</script>
+
+</body>
+</html>

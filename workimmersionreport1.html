@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Work Immersion Report</title>
+<style>
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgba(236, 236, 9, 0.973);
+    color: black;
+  }
+
+  header {
+    background-color: #0e960e;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    text-align: center;
+  }
+
+  .logo {
+    width: 200px;
+    height: auto;
+    display: block;
+  }
+
+  h2 {
+    text-align: center;
+    color: rgb(20, 17, 17);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';
+    font-size: 2em;
+    font-style: italic;
+    margin-top: 20px;
+  }
+
+  section {
+    width: 90%;
+    max-width: 1000px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    box-sizing: border-box;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+
+  th, td {
+    border: 1px solid black;
+    vertical-align: top;
+    padding: 5px;
+  }
+
+  input[type="date"], textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .buttons {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  button {
+    padding: 8px 15px;
+    font-weight: bold;
+    margin: 10px;
+    cursor: pointer;
+  }
+
+  #errorMsg {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  footer {
+    background-color: #e4e70d;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto;
+  }
+
+   input[type="file"] {
+      margin-top: 10px;
+    }
+
+    .file-preview {
+      display: none;
+      max-width: 500px;
+      max-height: 400px;
+      border: 2px solid black;
+      border-radius: 8px;
+      margin: 10px auto;
+    }
+
+  @media (max-width: 992px) {
+    header {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .logo {
+      margin: 10px auto;
+    }
+
+    table, th, td {
+      font-size: 0.9em;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="logoacademyremove.png" class="logo" alt="Academy Logo">
+    <h1>Tayabas Western Academy</h1>
+  </header>
+
+  <!-- Main Content -->
+  <section>
+    <h2>Activity 1: Report on Activities Performed</h2>
+    <p>State the work functions delegated unto you and how you accomplished them.</p>
+
+    <form id="immersionForm" novalidate>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Activities Done</th>
+            <th>Remarks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 5 rows -->
+            <tr>
+              <td><input type="date" name="date${i}" required></td>
+              <td><textarea name="activities${i}" rows="5" required placeholder="Describe activity"></textarea></td>
+              <td><textarea name="remarks${i}" rows="5" required placeholder="Remarks"></textarea></td>
+            </tr>
+             <tr>
+              <td><input type="date" name="date${i}" required></td>
+              <td><textarea name="activities${i}" rows="5" required placeholder="Describe activity"></textarea></td>
+              <td><textarea name="remarks${i}" rows="5" required placeholder="Remarks"></textarea></td>
+            </tr>
+            <tr>
+              <td><input type="date" name="date${i}" required></td>
+              <td><textarea name="activities${i}" rows="5" required placeholder="Describe activity"></textarea></td>
+              <td><textarea name="remarks${i}" rows="5" required placeholder="Remarks"></textarea></td>
+            </tr>
+            <tr>
+              <td><input type="date" name="date${i}" required></td>
+              <td><textarea name="activities${i}" rows="5" required placeholder="Describe activity"></textarea></td>
+              <td><textarea name="remarks${i}" rows="5" required placeholder="Remarks"></textarea></td>
+            </tr>
+            <tr>
+              <td><input type="date" name="date${i}" required></td>
+              <td><textarea name="activities${i}" rows="5" required placeholder="Describe activity"></textarea></td>
+              <td><textarea name="remarks${i}" rows="5" required placeholder="Remarks"></textarea></td>
+            </tr>
+
+          </tbody>
+      </table>
+
+      <form id="dtrForm">
+    <p><b>Attach Images/Documents:</b></p>
+    <input type="file" id="file1" accept="image/*" required><br>
+    <input type="file" id="file2" accept="image/*"><br>
+    <input type="file" id="file3" accept="image/*"><br>
+
+    <div id="fileNames"></div>
+
+    <img id="preview1" class="file-preview" alt="Preview 1">
+    <img id="preview2" class="file-preview" alt="Preview 2">
+    <img id="preview3" class="file-preview" alt="Preview 3">
+
+    </div>
+  </form>
+
+      <div id="errorMsg"></div>
+
+      <div class="buttons">
+        <button type="button" id="clearBtn">Clear Form</button>
+        <button type="button" id="nextBtn">Next</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Tayabas Western Academy. All rights reserved. | Contact: info@yourschool.edu.ph.
+    <p>SENIOR HIGH | WORK IMMERSION PROGRAM</p>
+  </footer>
+
+  <script>
+    const STORAGE_KEY = "workImmersionReportFormData";
+
+    const form = document.getElementById("immersionForm");
+    const clearBtn = document.getElementById("clearBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const errorMsg = document.getElementById("errorMsg");
+
+    // Save data to localStorage
+    function saveData() {
+      const data = {};
+      [...form.elements].forEach(el => {
+        if(el.name) data[el.name] = el.value;
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    // Load saved data from localStorage
+    function loadData() {
+      const savedData = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+      [...form.elements].forEach(el => {
+        if(el.name && savedData[el.name]) {
+          el.value = savedData[el.name];
+        }
+      });
+    }
+
+    // Clear form
+    clearBtn.addEventListener("click", () => {
+      form.reset();
+      localStorage.removeItem(STORAGE_KEY);
+      errorMsg.textContent = "";
+    });
+
+    // Validate form
+    function validateForm() {
+      let valid = true;
+      errorMsg.textContent = "";
+
+      [...form.elements].forEach(el => {
+        if(el.hasAttribute("required") && !el.value.trim()) {
+          valid = false;
+        }
+      });
+
+      if(!valid) {
+        errorMsg.textContent = "Please fill out all required fields before proceeding.";
+      }
+
+      return valid;
+    }
+
+    // Next button handler
+    nextBtn.addEventListener("click", () => {
+      if(validateForm()) {
+        saveData();
+        window.location.href = "workimmersion2.html"; // Adjust next page
+      }
+    });
+
+    // Auto-save on input
+    form.addEventListener("input", saveData);
+
+    window.addEventListener("load", loadData);
+  </script>
+</body>
+</html>

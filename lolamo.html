@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STUDENT INFORMATION SHEET</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #0e960e;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      font-size: 22px;
+      margin: 0;
+      text-align: center;
+      flex: 1;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .logo {
+      width: 200px;
+      height: 100px;
+      display: block;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    section {
+      width: 100%;
+      max-width: 1000px;
+      background-color: rgb(250, 244, 244);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      box-sizing: border-box;
+    }
+
+    h2 {
+      text-align: center;
+      color: #0e960e;
+      margin-bottom: 20px;
+    }
+
+    label, p {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+      margin-top: 4px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    /* STUDENT PHOTO */
+    .student-layout {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    .photo-box {
+      width: 150px;
+      text-align: center;
+    }
+
+    .photo-preview {
+      width: 150px;
+      height: 150px;
+      border: 2px solid #0e960e;
+      border-radius: 6px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .form-area {
+      flex: 1;
+    }
+
+    /* BUTTONS */
+    .next-button {
+      display: inline-block;
+      background-color: #0e960e;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      margin: 20px 10px 0 0;
+      cursor: pointer;
+      border: none;
+    }
+
+    #clearBtn {
+      background-color: red;
+      color: white;
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #e4e70d;
+      color: white;
+      text-align: center;
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .student-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .photo-box {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <img src="logoacademyremove.png" class="logo" alt="Academy Logo">
+  <h1>Tayabas Western Academy</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Portfolios</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<main>
+<section>
+<h2>STUDENT INFORMATION</h2>
+
+<form id="studentForm">
+
+  <div class="student-layout">
+
+    <!-- 2x2 PHOTO -->
+    <div class="photo-box">
+      <img src="https://via.placeholder.com/150"
+           id="photoPreview"
+           class="photo-preview"
+           alt="2x2 Photo">
+      <label>2x2 ID Picture</label>
+      <input type="file" accept="image/*" onchange="previewPhoto(event)">
+    </div>
+
+    <!-- FORM -->
+    <div class="form-area">
+
+      <label>Name:</label>
+      <input type="text" name="Name" required>
+
+      <label>Date of Birth:</label>
+      <input type="date" name="dob" required>
+
+      <label>Place of Birth:</label>
+      <input type="text" name="pob" required>
+
+      <label>Parent / Guardian Name:</label>
+      <input type="text" name="pgn" required>
+
+      <label>Postal Address:</label>
+      <input type="text" name="pa" required>
+
+      <label>Email Address:</label>
+      <input type="email" name="ea" required>
+
+      <label>Cellphone Number:</label>
+      <input type="text" name="cn" required>
+
+      <label>Religion:</label>
+      <input type="text" name="r">
+
+      <label>Health Issues / Allergies:</label>
+      <input type="text" name="hia">
+
+      <label>Hobbies / Past Time Activities:</label>
+      <input type="text" name="hpta">
+
+      <label>Skills / Talents:</label>
+      <input type="text" name="skills">
+
+      <p>How do you feel about school?</p>
+      <textarea rows="4" name="schoolFeelings" required></textarea>
+
+      <!-- BUTTONS -->
+      <button type="button" class="next-button" onclick="goBack()">⬅ Back</button>
+      <button type="button" class="next-button" id="nextBtn">Next ➜</button>
+      <button type="button" id="clearBtn">Clear Form</button>
+
+    </div>
+  </div>
+
+</form>
+</section>
+</main>
+
+<footer>
+  © 2025 Tayabas Western Academy | WORK IMMERSION PROGRAM
+</footer>
+
+<script>
+  function previewPhoto(event) {
+    document.getElementById("photoPreview").src =
+      URL.createObjectURL(event.target.files[0]);
+  }
+
+  function goBack() {
+    window.history.back();
+  }
+
+  const form = document.getElementById("studentForm");
+
+  document.getElementById("clearBtn").onclick = () => {
+    if (confirm("Clear the form?")) form.reset();
+  };
+
+  document.getElementById("nextBtn").onclick = () => {
+    if (!form.checkValidity()) {
+      alert("Please complete required fields.");
+      return;
+    }
+    window.location.href = "THECOMPANY1.html";
+  };
+</script>
+
+</body>
+</html>

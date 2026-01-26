@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<style type="text/css">
+    <!--
+        body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+
+    }
+
+     /* ABOUT */
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      background-color: rgb(250, 244, 244);
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+         /* HEADER */
+    header {
+      background-color: #0e960e;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+    }
+
+    header h1 {
+      font-size: 22px;
+      margin: 0;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+     .logo{
+            width: 200px;
+            height: 100px;
+            display: block;
+            margin-left: 0.5px;
+        }
+
+        -->
+         footer {
+      background-color: #e4e70d;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    .next-button {
+    display: inline-block;
+    background-color: #0e960e;
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    position: relative;
+    bottom: 60px;
+    left: 1200px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .next-button:hover {
+    background-color: #45a049;
+    transform: translateX(5px);
+  }
+
+  .next-button:active {
+    background-color: #3e8e41;
+    transform: translateX(2px);
+  }
+  /* MOBILE */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+  }
+  /* ===== MOBILE OPTIMIZATION ===== */
+@media (max-width: 768px) {
+
+  header {
+    flex-direction: column;
+    padding: 15px 20px;
+  }
+
+  .logo {
+    height: 45px;
+    margin-bottom: 10px;
+  }
+
+  header h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav a {
+    padding: 12px;
+    margin: 5px 0;
+    background-color: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  nav a::after {
+    display: none;
+  }
+
+  section {
+    padding: 30px 18px;
+    margin: 20px 15px;
+  }
+
+  h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  p, li {
+    font-size: 15px;
+    text-align: center;
+  }
+</style>
+        </head>
+            <body>
+                <!-- HEADER -->
+  <header>
+    <div class="logo-container">
+    <img src="logoacademyremove.png" class="logo"  alt="logoacademyremove">
+</div>
+        <h1>Tayabas Western Academy</h1>
+        <nav>
+      <a href="Home.html">Home</a>
+      <a href="About.html">About</a>
+      <a href="#">Portfolios</a>
+      <a href="Contact.html">Contact</a>
+    </nav>
+    </header>
+
+                <!-- Table Contents -->
+   <section>
+    <h2> TABLE OF CONTENTS </h2>
+      <ul>
+                    <b><li> PREFACE</li></b>
+                    <b><li> WORK IMMERSION</li></b>
+                    <b><li> STUDENT INFORMATION SHEET</li></b>
+                    <b><li> RESUME</li></b>
+                            <dl> -Sample Resume</dl>
+                            <dl> -Own Resume</dl>
+                     <b><li> THE COMPANY</li></b>
+                            <dl> -Activity 1: Profile of the Company/Establishment</dl>
+                            <dl> -Activity 2: Organization Chart</dl>
+                                <dd> Sample Organization Chart</dd>
+                                 <dd> Organizational Chart of office or estabvlishment assigned</dd>
+                    <b><li> DAILY TIME RECORD(DTR)</li></b>
+                    <b><li> WORK IMMERSION REPORT</li></b>
+                            <dl> -Activity 1: Report on Activities Performed</dl>
+                            <dl> -Activity 2: Other Related Test</dl>
+                            <dl> -Activity 3: Daily Activity Report</dl>
+                                <dd> -DAY 1</dd>
+                                <dd> -DAY 2</dd>
+                                <dd> -DAY 3</dd>
+                                <dd> -DAY 4</dd>
+                                <dd> -DAY 5</dd>
+                                <dd> -DAY 6</dd>
+                                <dd> -DAY 7</dd>
+                                <dd> -DAY 8</dd>
+                                <dd> -DAY 9</dd>
+                                <dd> -DAY 10</dd>
+                    <b><li>  POST-IMMERSION</li></b>
+                            <dl> -Collage for Week 1</dl>
+                            <dl> -Collage for Week 2</dl>
+                    <b><li> MY REFLECTIONS </li></b>
+                    <b><li> COMPLETION CERTIFICATE</li></b>
+                </ul>
+   </section>
+
+   <a href="PREFACE.html" class="next-button">Next ➜</a>
+        
+   <!-- FOOTER -->
+  <footer>
+    © 2025 Tayabas Western Academy. All rights reserved. | Contact: info@yourschool.edu.ph
+  </footer>
+            </body>
+    </html>

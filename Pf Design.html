@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Login</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(135deg, #1b4332, #2d6a4f, #081c15);
+      background-size: 400% 400%;
+      animation: gradientShift 18s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      /* Background image as <img>*/
+      .bg-img {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1; /* put behind everything*/
+        animation: fadeZoom 20s ease-in-out infinite;
+      }
+
+      /* Fade + Zoom animation */
+    }
+    @keyframes fadeZoom {
+      0% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.1); }
+      100% { opacity: 0.6; transform: scale(1); }
+    }
+
+    /* --------- CARD ---------*/
+    .box {
+      width: 360px;
+      background: #ffffff;
+      border-radius: 22px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.25);
+      text-align: center;
+      padding: 25px 30px 40px;
+      animation: fadeIn 0.5s ease;
+      overflow: hidden;
+      display: none;
+      animation: fadeIn 0.4 ease;
+      transform: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      z-index: 1; /* keep it above background */
+    }
+    .box:hover {
+      transform: translateY(-6px);
+      box-shadow:  0 12px 36px rgba(10, 10, 10, 0);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    /* --------- HEADER WITH LOGO ----------*/
+    .header-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(135deg, #14532d, #2d6a4f);
+      padding: 30px 20px 25px 20px;
+      border-radius: 22px 22px 0 0;
+      margin: -25px -30px 20px -30px;
+    }
+    
+    .logo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #daa520;
+      background: #fff;
+      margin-bottom: 15px;
+    }
+      .logo:hover {
+      transform: rotate(8deg) scale(1.08);
+    }
+    .header-bar h2 {
+      color: #fefefe;
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: 1px;
+
+      /*--------- INPUTS ---------*/
+    }
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      margin-top: 14px;
+      border: 2px solid #2d6a4f;
+      border-radius: 12px;
+      font-size: 15px;
+      background: #fafafa;
+      transition: all 0.3s ease;
+    }
+    input:focus {
+      border-color: #daa520;
+      box-shadow: 0 0 10px rgba(218,165,32,0.6);
+      outline: none;
+      transform: scale(1.02);
+
+    input:hover {
+        border-color: #b8860b;
+        box-shadow: 0 0 8px rgba(218,165,32,0.6);
+
+      }
+
+      /* --------- BUTTONS ---------*/
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 22px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #fff;
+      background: linear-gradient(90deg, #2d6a4f 0%, #daa520 100%);
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #14532d 0%, #b8860b 100%);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    }
+    .footer-text {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #666;
+    }
+    .footer-text a {
+      color: #2d6a4f;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .footer-text a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<!--Background Image-->
+<img src="twabackgroundlogin.jpeg" alt="Background" class=".bg-img">
+
+<!-- LOGIN PAGE -->
+<div class="box" id="login-page" style="display:block;">
+  <div class="header-bar">
+    <img src="twa_edited.png" class="logo" alt="App Logo">
+    <h2>Application Login</h2>
+  </div>
+  <input type="text" id="username" placeholder="Username" required>
+  <input type="password" id="password" placeholder="Password" required>
+  <button onclick="login()">Login</button>
+  <div class="footer-text">
+    <p>Don’t have an account? <a onclick="showSignup()">Sign up</a></p>
+  </div>
+</div>
+
+<!-- SIGNUP PAGE -->
+<div class="box" id="signup-page">
+  <div class="header-bar">
+    <img src="twa_edited.png" class="logo" alt="App Logo">
+    <h2>Create Account</h2>
+  </div>
+  <input type="text" id="new-username" placeholder="Username" required>
+  <input type="email" id="new-email" placeholder="Email" required>
+  <input type="password" id="new-password" placeholder="Password" required>
+  <button onclick="signup()">Sign Up</button>
+  <div class="footer-text">
+    <p>Already have an account? <a onclick="showLogin()">Back to Login</a></p>
+  </div>
+</div>
+
+<script>
+  function showSignup() {
+    document.getElementById("login-page").style.display = "none";
+    document.getElementById("signup-page").style.display = "block";
+  }
+  function showLogin() {
+    document.getElementById("signup-page").style.display = "none";
+    document.getElementById("login-page").style.display = "block";
+  }
+
+  // Signup logic
+  function signup() {
+    const newUser = document.getElementById("new-username").value.trim();
+    const newEmail = document.getElementById("new-email").value.trim();
+    const newPass = document.getElementById("new-password").value.trim();
+
+    if (newUser && newEmail && newPass) {
+      // Save user in localStorage
+      const userData = { username: newUser, email: newEmail, password: newPass };
+      localStorage.setItem("appUser", JSON.stringify(userData));
+      alert("Account created successfully! Please log in.");
+      showLogin();
+    } else {
+      alert("Please fill in all fields.");
+    }
+  }
+
+  // Login logic
+  function login() {
+    const user = document.getElementById("username").value.trim();
+    const pass = document.getElementById("password").value.trim();
+
+    const storedUser = JSON.parse(localStorage.getItem("appUser"));
+
+    if (storedUser && user === storedUser.username && pass === storedUser.password) {
+      alert("Login successful! Redirecting...");
+      window.location.href = "dashboard.html"; // replace with your app page
+    } else {
+      alert("Invalid username or password.");
+    }
+  }
+</script>
+
+</body>
+</html>

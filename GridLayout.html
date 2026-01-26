@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lesson 10 Grid Layout</title>
+        <style>
+            body {
+                margin:0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background-color: #fdf100dd;
+            }
+            .container {
+                display: grid;
+                grid-template-rows: 1fr 1fr;
+                grid-template-columns: 2fr 2fr 1fr 1fr;
+                gap: 2px;
+                width: 80%;
+                height:80%;
+                background: white;
+            }
+            .box {
+                background: #ddd;
+                border: 1px solid #000;
+            }
+            .large {
+                grid-column: span 2;
+            }
+            .small-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2px;
+            }
+            .tiny-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2px;
+            }
+            </style>
+            </head>
+            <body>
+                <div class="container">
+                    <div class="box large"></div>
+                    <div class="box large"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box small-grid">
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="tiny-grid"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>

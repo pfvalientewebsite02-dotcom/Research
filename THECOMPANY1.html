@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>THE COMPANY</title>
+  <style>
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #0e960e;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      flex-wrap: wrap;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    header h1 {
+      font-size: 22px;
+      margin: 0;
+      flex: 1;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .logo {
+      width: 200px;
+      height: 100px;
+      display: block;
+    }
+
+    /* ===== Main Content Wrapper ===== */
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;     /* ✅ Centers content horizontally */
+      align-items: center;         /* ✅ Centers content vertically */
+      flex-direction: column;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    /* ===== Content Sections ===== */
+    section {
+      width: 100%;
+      max-width: 1000px;
+      background-color: rgb(250, 244, 244);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      box-sizing: border-box;
+      margin: 20px 0;
+      text-align: left;
+    }
+
+    h2 {
+      text-align: center;
+      color: #06402b;
+      font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+      font-size: 2em;
+      font-style: italic;
+    }
+
+    .box {
+      margin: 5em;
+      background: #06402b;
+      color: rgb(41, 37, 37);
+      font-family: tahoma;
+      font-weight: bold;
+      padding: 1%;
+      border-radius: 9px;
+    }
+
+    textarea, input[type="file"] {
+      display: block;
+      margin: 0 auto 20px;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 10px;
+    }
+
+    .buttons {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #0e960e;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #0b7a0b;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background-color: #e4e70d;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    /* ✅ Mobile / Tablet behavior */
+    @media (max-width: 992px) {
+      main {
+        align-items: flex-start; /* No vertical centering on small screens */
+        padding: 20px;
+      }
+      section {
+        padding: 20px;
+        margin-top: 20px;
+      }
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .logo {
+        margin: 10px auto;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="logo-container">
+      <img src="logoacademyremove.png" class="logo" alt="Academy Logo">
+    </div>
+    <h1>Tayabas Western Academy</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Portfolios</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ===== CENTERED MAIN CONTENT ===== -->
+  <main>
+    <section>
+      <p><b>Objectives:</b> Appreciating management processes by observing, identifying, and describing the following:</p>
+      <ol>
+        <li>Nature of the business</li>
+        <li>Description of the products/services</li>
+        <li>Target Clientele</li>
+        <li>Organizational structure</li>
+        <li>Company rules and regulations</li>
+      </ol>
+    </section>
+
+    <section>
+      <b>Activity 1:</b>
+ 
+      <h2>Profile of the Company/Establishment</h2>
+      <b>Sample Company Profile</b>
+      <p>
+        Owner Johanna Shandy served as pioneer of cultural gentrification when she opened the cafe nearly a decade ago.
+        Her father established the family's business in Palao Market about 30 years ago.
+        Johanna runs the cafe with her two sisters and offers freshly baked pastries, desserts,
+        homemade pastas, breakfast salads, and various gourmet main courses like the famed Bouillabaisse dish.
+      </p>
+    </section>
+
+    <section>
+      <p><b>Write Description and profile of your work immersion area. Please include pictures.</b></p>
+
+      <form id="companyForm" novalidate>
+        <textarea name="description" placeholder="Write your company description here..." rows="10" required></textarea>
+
+        <p><b>Vision:</b></p>
+        <textarea name="vision" placeholder="Write the company's vision..." rows="6" required></textarea>
+
+        <p><b>Mission:</b></p>
+        <textarea name="mission" placeholder="Write the company's mission..." rows="6" required></textarea>
+
+        <p><b>Core Values:</b></p>
+        <textarea name="coreValues" placeholder="List the company's core values..." rows="6" required></textarea>
+
+        <p>Include picture here of your work immersion area:</p>
+        <input type="file" name="workPicture" accept="image/*">
+
+        <div class="buttons">
+          <button type="button" id="clearBtn">Clear Form</button>
+          <button type="button" id="nextBtn">Next</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    © 2025 Tayabas Western Academy. All rights reserved. | Contact: info@yourschool.edu.ph.
+    <p>SENIOR HIGH</p>
+    <p>WORK IMMERSION PROGRAM</p>
+  </footer>
+
+  <!-- ===== SCRIPT ===== -->
+ <script>
+  const form = document.getElementById('companyForm');
+  const STORAGE_KEY = 'workImmersionCompanyFormData';
+  const fileInput = document.querySelector('input[name="workPicture"]');
+
+  // Create preview image element
+  const preview = document.createElement('img');
+  preview.style.maxWidth = "300px";
+  preview.style.margin = "10px auto";
+  preview.style.display = "none";
+  preview.style.borderRadius = "10px";
+  fileInput.insertAdjacentElement("afterend", preview);
+
+  // Load saved data
+  window.addEventListener('load', () => {
+    const savedData = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    for (const [name, value] of Object.entries(savedData)) {
+      const field = form.elements[name];
+      if (!field || field.type === 'file') continue;
+      field.value = value;
+    }
+  });
+
+  // Auto-save
+  form.addEventListener('input', () => {
+    const data = {};
+    Array.from(form.elements).forEach(el => {
+      if (el.name && el.type !== 'file') data[el.name] = el.value;
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  });
+
+  // Image preview feature
+  fileInput.addEventListener("change", () => {
+    const file = fileInput.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = e => {
+        preview.src = e.target.result;
+        preview.style.display = "block";
+      };
+      reader.readAsDataURL(file);
+    } else {
+      preview.style.display = "none";
+    }
+  });
+
+  // Clear form
+  document.getElementById('clearBtn').addEventListener('click', () => {
+    form.reset();
+    preview.style.display = "none"; // Hide preview
+    localStorage.removeItem(STORAGE_KEY);
+  });
+
+  // NEXT button validation
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    if (!form.checkValidity()) {
+      alert("Please fill out all required fields before proceeding.");
+      form.reportValidity();
+      return;
+    }
+    window.location.href = "THECOMPANY4.html";
+  });
+</script>
+</body>
+</html>

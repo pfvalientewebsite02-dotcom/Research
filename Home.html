@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+    content="width device-width,initial-scale=1.0">
+    <title> Home </title>
+    <style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: linear-gradient(to right, #eef5ee, #f8fff8);
+    line-height: 1.6;
+    animation: fadeIn 1s ease-in;
+  }
+
+  /* HEADER */
+  header {
+    background-color: #0e960e;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    animation: slideDown 0.8s ease;
+  }
+
+  header h1 {
+    font-size: 22px;
+    margin: 0;
+  }
+
+  .logo {
+    height: 50px;
+  }
+
+  /* NAVIGATION */
+  nav a {
+    color: white;
+    margin: 0 12px;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+  }
+
+  nav a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -4px;
+    background: #fff;
+    transition: width 0.3s ease;
+  }
+
+  nav a:hover::after {
+    width: 100%;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 60px 25px;
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    animation: fadeUp 1s ease;
+    transition: transform 0.3s ease;
+  }
+
+  section:hover {
+    transform: translateY(-5px);
+  }
+
+  h2 {
+    color: #0e960e;
+  }
+
+  ul li {
+    margin-bottom: 8px;
+  }
+
+  /* CTA */
+  .cta {
+    background: linear-gradient(to right, #1aec2b, #14c524);
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 30px;
+    color: #fff;
+    animation: pulse 2.5s infinite;
+  }
+
+  .cta h2 {
+    color: #fff;
+  }
+
+  /* FOOTER */
+  footer {
+    background-color: #e4e70d;
+    color: #000;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    margin-top: 40px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(26,236,43,0.6); }
+    70% { box-shadow: 0 0 0 15px rgba(26,236,43,0); }
+    100% { box-shadow: 0 0 0 0 rgba(26,236,43,0); }
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+  }
+  /* ===== MOBILE OPTIMIZATION ===== */
+@media (max-width: 768px) {
+
+  header {
+    flex-direction: column;
+    padding: 15px 20px;
+  }
+
+  .logo {
+    height: 45px;
+    margin-bottom: 10px;
+  }
+
+  header h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav a {
+    padding: 12px;
+    margin: 5px 0;
+    background-color: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  nav a::after {
+    display: none;
+  }
+
+  section {
+    padding: 30px 18px;
+    margin: 20px 15px;
+  }
+
+  h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  p, li {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  ul {
+    padding-left: 0;
+    list-style-position: inside;
+  }
+
+  .cta {
+    padding: 20px;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+
+  footer {
+    font-size: 13px;
+    padding: 15px;
+  }
+}
+
+/* ===== EXTRA SMALL PHONES ===== */
+@media (max-width: 480px) {
+
+  header h1 {
+    font-size: 18px;
+  }
+
+  nav a {
+    font-size: 14px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  p, li {
+    font-size: 14px;
+  }
+}
+</style>
+
+    </head>
+<body>
+        <!-- HEADER -->
+  <header>
+    <div class="logo-container">
+    <img src="logoacademyremove.png" class="logo"  alt="logoacademyremove">
+</div>
+
+        <nav>
+      <a href="Home.html">Home</a>
+      <a href="About.html">About</a>
+      <a href="#">Portfolios</a>
+      <a href="Contact.html">Contact</a>
+    </nav>
+    </header>
+
+    <section>
+    <div class="container">
+        <h2> Welcome </h2>
+        <p>
+            Welcome to the official website of the <strong> Work Immersion Program </strong> of <strong> Tayabas Western Academy.</strong> 
+        This platform provides Grade 12 students with important information, updates, and guidelines related to their work immersion. </p>
+    </section>
+    <section>
+        <h2> Objectives </h2>
+            <ul>
+                <li> Expose students to real workplace environments </li>
+                <li> Devolop skills, discipline, and work ethics </li>
+                <li> Prepare students for employment or higher education </li>
+                <li> Enhance responsibility and professionalism </li>
+            </ul>
+    </section>
+    <section>
+        <h2> Who can Join? </h2>
+        <p>
+            This program is intended for <strong> Grade 12 students </strong> of Tayabas Western Academy who are currently
+            enrolled in Senior High School. </p>
+    <div class="cta">
+        <h2> Get Started </h2>
+        <p> View the program details, learn more about work immersion, or contact the school for inquiries and guidance. </p>
+        <p> Visit the <strong> About </strong> and <strong> Contact </strong> pages for more information. </p>
+    </div>
+    </section>
+</div>
+     <!-- FOOTER -->
+  <footer>
+    © 2025 Tayabas Western Academy. All rights reserved. | Contact: info@yourschool.edu.ph
+  </footer>
+</body>
+</html>
+            

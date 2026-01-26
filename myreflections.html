@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurant Organizational Chart</title>
+  <style>
+    .logo-container {
+            position:absolute;
+            right: 10px;
+            margin-top: 1px;
+            text-align: right;
+        }
+        .logo{
+            width: 180px;
+            height: 60px;
+            display: block;
+            margin-left: auto;
+        }
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .chart {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .level {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    .box {
+      background-color: #555;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .light {
+      background-color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo-container">
+    <img src="logoacademyremove.png" class="logo"  alt="logoacademyremove">
+</div>
+
+  <h2>Sample Organizational Chart of a Restaurant</h2>
+
+  <div class="chart">
+
+    <!-- Owner -->
+    <div class="level">
+      <div class="box light"><textarea rows="5" cols="20" placeholder="Owner"></textarea></div>
+    </div>
+
+    <!-- General Manager + Bookkeeper -->
+    <div class="level">
+      <div class="box light"><textarea rows="5" cols="20" placeholder="General"></textarea></div>
+      <div class="box"><textarea rows="5" cols="20" placeholder="Bookkeeper"></textarea></div>
+    </div>
+
+    <!-- Leads -->
+    <div class="level">
+      <div class="box"><textarea rows="5" cols="20" placeholder="Lead server, Host"></textarea></div>
+      <div class="box"><textarea rows="5" cols="20" placeholder="Lead Bartender"></textarea></div>
+      <div class="box"><textarea rows="5" cols="20" placeholder="Lead Cook/Asst. Manager"></textarea></div>
+    </div>
+
+    <!-- Staff -->
+    <div class="level">
+      <div class="box"><textarea rows="5" cols="20" placeholder="Server, Host"></textarea></div>
+      <div class="box"><textarea rows="5" cols="20" placeholder="Bartender, Barbacks"></textarea></div>
+      <div class="box"><textarea rows="5" cols="20" placeholder="Characterooks,Diswasher,Busser"></textarea></div>
+    </div>
+
+  </div>
+
+</body>
+</html>

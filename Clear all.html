@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Resume Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .logo-container {
+            position:absolute;
+            right: 10px;
+            margin-top: 1px;
+            text-align: right;
+        }
+        .logo{
+            width: 400px;
+            height: 200px;
+            display: block;
+            margin-left: auto;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #cv-template {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .btn {
+            background-color: #0b5ed7;
+            color: rgba(255, 255, 255, 0.512);
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #084298;
+        }
+        .btn-red {
+            background-color: #dc3545;
+        }
+        .btn-red:hover {
+            background-color: #a71d2a;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+    <img src="logoacademyremove.png" class="logo"  alt="logoacademyremove">
+</div>
+<h1>Resume Builder</h1>
+<form id="resume-form">
+    <label>Full Name:</label><br>
+    <input type="text" id="nameField"><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" id="emailField"><br><br>
+
+    <label>Phone:</label><br>
+    <input type="text" id="phoneField"><br><br>
+
+    <label>Address:</label><br>
+    <input type="text" id="addressField"><br><br>
+
+    <label>About Me:</label><br>
+    <textarea id="aboutField"></textarea><br><br>
+
+    <button type="button" class="btn" onclick="generateCV()">Preview Resume</button>
+    <button type="button" class="btn" onclick="saveResume()">Save Resume</button>
+    <button type="button" class="btn btn-red" onclick="clearResume()">Clear All</button>
+</form>
+
+<div id="cv-template">
+    <h2 id="nameT"></h2>
+    <p><strong>Email:</strong> <span id="emailT"></span></p>
+    <p><strong>Phone:</strong> <span id="phoneT"></span></p>
+    <p><strong>Address:</strong> <span id="addressT"></span></p>
+    <p><strong>About Me:</strong> <span id="aboutT"></span></p>
+</div>
+
+<script>
+    // Fill the preview from form
+    function generateCV() {
+        document.getElementById("nameT").innerText = document.getElementById("nameField").value;
+        document.getElementById("emailT").innerText = document.getElementById("emailField").value;
+        document.getElementById("phoneT").innerText = document.getElementById("phoneField").value;
+        document.getElementById("addressT").innerText = document.getElementById("addressField").value;
+        document.getElementById("aboutT").innerText = document.getElementById("aboutField").value;
+    }
+
+    // Save resume to website (localStorage)
+    function saveResume() {
+        const resumeData = {
+            name: document.getElementById("nameField").value,
+            email: document.getElementById("emailField").value,
+            phone: document.getElementById("phoneField").value,
+            address: document.getElementById("addressField").value,
+            about: document.getElementById("aboutField").value
+        };
+        localStorage.setItem("savedResume", JSON.stringify(resumeData));
+        alert("Resume saved on this website!");
+    }
+
+    // Clear all data
+    function clearResume() {
+        if (confirm("Are you sure you want to clear your saved resume?")) {
+            localStorage.removeItem("savedResume");
+            document.getElementById("resume-form").reset();
+            document.getElementById("nameT").innerText = "";
+            document.getElementById("emailT").innerText = "";
+            document.getElementById("phoneT").innerText = "";
+            document.getElementById("addressT").innerText = "";
+            document.getElementById("aboutT").innerText = "";
+            alert("All resume data cleared.");
+        }
+    }
+
+    // Load saved resume when page opens
+    window.onload = function() {
+        const savedData = localStorage.getItem("savedResume");
+        if (savedData) {
+            const resumeData = JSON.parse(savedData);
+            document.getElementById("nameField").value = resumeData.name;
+            document.getElementById("emailField").value = resumeData.email;
+            document.getElementById("phoneField").value = resumeData.phone;
+            document.getElementById("addressField").value = resumeData.address;
+            document.getElementById("aboutField").value = resumeData.about;
+            generateCV(); // auto-update preview
+        }
+    };
+</script> <br />
+<a href="THECOMPANY1.html"> <input type="submit" value="Next" /></a>
+            <footer style="text-align: right; margin-top: 20px;">
+        <p>SENIOR HIGH</p>
+        <p>WORK IMMERSION PROGRAM</p>
+    </footer>
+</body>
+</html>

@@ -106,16 +106,8 @@
     background-color: #0e960e;
   }
 
-  .submit-btn:hover {
-    background-color: #0b7a0b;
-  }
-
   .clear-btn {
     background-color: #b33a3a;
-  }
-
-  .clear-btn:hover {
-    background-color: #8c2e2e;
   }
 
   footer {
@@ -142,54 +134,37 @@
 
   <form id="dailyActivityForm" novalidate>
     <table>
-      <tr>
-        <th>Student-Trainee</th>
-        <td><textarea name="student" rows="2" required></textarea></td>
-      </tr>
-      <tr>
-        <th>Strand</th>
-        <td><textarea name="strand" rows="2" required></textarea></td>
-      </tr>
-      <tr>
-        <th>Establishment Name</th>
-        <td><textarea name="establishment" rows="2" required></textarea></td>
-      </tr>
-      <tr>
-        <th>Address</th>
-        <td><textarea name="address" rows="2" required></textarea></td>
-      </tr>
-      <tr>
-        <th>Department Assigned</th>
-        <td><textarea name="department" rows="2" required></textarea></td>
-      </tr>
-      <tr>
-        <th>Area Head / Supervisor</th>
-        <td><textarea name="supervisor" rows="2" required></textarea></td>
-      </tr>
+      <tr><th>Student-Trainee</th><td><textarea name="student" required></textarea></td></tr>
+      <tr><th>Strand</th><td><textarea name="strand" required></textarea></td></tr>
+      <tr><th>Establishment Name</th><td><textarea name="establishment" required></textarea></td></tr>
+      <tr><th>Address</th><td><textarea name="address" required></textarea></td></tr>
+      <tr><th>Department Assigned</th><td><textarea name="department" required></textarea></td></tr>
+      <tr><th>Area Head / Supervisor</th><td><textarea name="supervisor" required></textarea></td></tr>
     </table>
 
-    <label><strong>Date:</strong></label>
+    <label>Date:</label>
     <input type="date" name="date" required>
 
-    <label><strong>Time:</strong></label>
+    <label>Time:</label>
     <input type="time" name="time" required>
 
-    <label><strong>Activities Done:</strong></label>
-    <textarea name="activity1" rows="2" required></textarea>
-    <textarea name="activity2" rows="2" required></textarea>
+    <label>Activities Done:</label>
+    <textarea name="activity1" required></textarea>
+    <textarea name="activity2" required></textarea>
 
-    <label><strong>Area Head / Supervisor Feedback:</strong></label>
-    <textarea name="feedback" rows="5" required></textarea>
+    <label>Supervisor Feedback:</label>
+    <textarea name="feedback" required></textarea>
 
-    <label><strong>Attach Activity Picture:</strong></label>
+    <label>Attach Activity Picture:</label>
     <input type="file" id="activityPicture" accept="image/*">
     <img id="imagePreview">
 
-    <label><strong>Student-Trainee Reflections:</strong></label>
-    <textarea name="reflection" rows="5" required></textarea>
+    <label>Student Reflection:</label>
+    <textarea name="reflection" required></textarea>
 
     <div class="buttons">
       <button type="button" class="clear-btn" id="clearBtn">Clear Form</button>
+      <button type="button" class="submit-btn" id="pdfBtn">Download PDF</button>
       <button type="submit" class="submit-btn">Submit</button>
     </div>
   </form>
@@ -199,92 +174,93 @@
   © 2025 Tayabas Western Academy | SENIOR HIGH WORK IMMERSION PROGRAM
 </footer>
 
-<!-- KEEP YOUR HTML & CSS THE SAME ABOVE -->
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
 const STORAGE_KEY = "workImmersionDay10Data";
 const form = document.getElementById("dailyActivityForm");
 const imageInput = document.getElementById("activityPicture");
 const imagePreview = document.getElementById("imagePreview");
-
-// Load saved data
-window.addEventListener("load", () => {
-  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-  for (const key in saved) {
-    const el = form.elements[key];
-    if (el) el.value = saved[key];
-  }
-});
-
-// Auto-save
-form.addEventListener("input", (e) => {
-  if (e.target.name) {
-    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-    data[e.target.name] = e.target.value;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  }
-});
+const { jsPDF } = window.jspdf;
 
 // Image preview
 imageInput.addEventListener("change", () => {
   const file = imageInput.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = e => {
-      imagePreview.src = e.target.result;
-      imagePreview.style.display = "block";
-    };
-    reader.readAsDataURL(file);
-  }
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    imagePreview.src = e.target.result;
+    imagePreview.style.display = "block";
+  };
+  reader.readAsDataURL(file);
 });
 
-// Clear form
+// Clear
 document.getElementById("clearBtn").addEventListener("click", () => {
   form.reset();
   imagePreview.style.display = "none";
-  localStorage.removeItem(STORAGE_KEY);
 });
 
-// ✅ SUBMIT → SAVE → REDIRECT
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
+// PDF
+document.getElementById("pdfBtn").addEventListener("click", () => {
   if (!form.checkValidity()) {
     alert("Please complete all required fields.");
     form.reportValidity();
     return;
   }
 
-  const submission = {
-    student: form.student.value,
-    title: "Daily Activity Report - Day 10",
-    description: `
-Date: ${form.date.value}
-Time: ${form.time.value}
+  const pdf = new jsPDF();
+  let y = 40;
 
-Activities:
-- ${form.activity1.value}
-- ${form.activity2.value}
+  const logo = new Image();
+  logo.src = "logoacademyremove.png";
 
-Supervisor Feedback:
-${form.feedback.value}
+  logo.onload = () => {
+    pdf.addImage(logo, "PNG", 85, 10, 40, 20);
+    pdf.setFontSize(14);
+    pdf.text("Daily Activity Report - Day 10", 105, 35, { align: "center" });
+    pdf.setFontSize(11);
 
-Reflection:
-${form.reflection.value}
-    `
+    const add = t => { pdf.text(t, 10, y); y += 8; };
+
+    add(`Student: ${form.student.value}`);
+    add(`Strand: ${form.strand.value}`);
+    add(`Establishment: ${form.establishment.value}`);
+    add(`Address: ${form.address.value}`);
+    add(`Department: ${form.department.value}`);
+    add(`Supervisor: ${form.supervisor.value}`);
+    y += 5;
+
+    add(`Date: ${form.date.value}`);
+    add(`Time: ${form.time.value}`);
+    y += 5;
+
+    add("Activities:");
+    add(`- ${form.activity1.value}`);
+    add(`- ${form.activity2.value}`);
+    y += 5;
+
+    pdf.text("Supervisor Feedback:", 10, y);
+    y += 6;
+    pdf.text(form.feedback.value, 10, y, { maxWidth: 180 });
+    y += 20;
+
+    pdf.text("Reflection:", 10, y);
+    y += 6;
+    pdf.text(form.reflection.value, 10, y, { maxWidth: 180 });
+
+    if (imagePreview.src) {
+      pdf.addPage();
+      pdf.text("Activity Picture:", 10, 10);
+      pdf.addImage(imagePreview.src, "JPEG", 10, 20, 180, 120);
+    }
+
+    const filename = form.student.value.trim().replace(/\s+/g, "_");
+    pdf.save(`${filename}_Day_10_Work_Immersion_Report.pdf`);
   };
-
-  // Save for portfolio page
-  localStorage.setItem("pendingPortfolioEntry", JSON.stringify(submission));
-
-  // Clear autosave
-  localStorage.removeItem(STORAGE_KEY);
-
-  // 🚀 JUMP TO PORTFOLIO PAGE
-  window.location.href = "portfolio.html";
 });
 </script>
-
 
 </body>
 </html>
